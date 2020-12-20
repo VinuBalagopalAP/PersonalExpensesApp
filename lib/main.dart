@@ -26,6 +26,8 @@ class MyHomePage extends StatelessWidget {
         child: Container(
           width: double.infinity,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Card(
                 color: Colors.blue,
@@ -33,7 +35,8 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
               Card(
-                child: Text('LIST OF TX!'),
+                color: Colors.red,
+                child: Container(child: Text('LIST OF TX!')),
               )
             ],
           ),
