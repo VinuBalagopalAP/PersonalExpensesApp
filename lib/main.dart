@@ -32,6 +32,10 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     )
   ];
+  // String titleInput;
+  // String amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +66,31 @@ class MyHomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   TextField(
-                    decoration: InputDecoration(labelText: 'Tilte'),
+                    decoration: InputDecoration(
+                      labelText: 'Tilte',
+                    ),
+                    controller: titleController,
+
+                    // onChanged: (val) {
+                    //   titleInput = val;
+                    // },
                   ),
                   TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                    controller: amountController,
+                    // onChanged: (val) => amountInput = val,
                   ),
                   FlatButton(
-                    onPressed: () {},
                     textColor: Colors.purple,
                     child: Text(
                       'Add Transaction',
                     ),
+                    onPressed: () {
+                      print(titleController);
+                      print(amountController);
+                    },
                   )
                 ],
               ),
@@ -114,7 +132,9 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          DateFormat.yMMMd().format(tx.date),
+                          DateFormat.yMMMd().format(
+                            tx.date,
+                          ),
                           style: TextStyle(
                             color: Colors.grey,
                           ),
