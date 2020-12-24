@@ -11,6 +11,9 @@ class PersonalExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses App',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
       home: MyHomePage(),
     );
   }
