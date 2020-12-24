@@ -42,7 +42,7 @@ class _UserTransactionsState extends State<UserTransactions> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        NewTransaction(),
+        NewTransaction(_addNewTransactions),
         TransactionList(_userTransactions),
       ],
     );
