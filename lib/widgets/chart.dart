@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/models/transaction.dart';
+import 'package:flutter_complete_guide/widgets/chartbar.dart';
 import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
@@ -7,7 +8,7 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTansaction);
 
-  List<Map<String, Object?>> get groopedTransactionValues {
+  List<Map<String, dynamic>> get groopedTransactionValues {
     return List.generate(
       7,
       (index) {
@@ -25,15 +26,18 @@ class Chart extends StatelessWidget {
           }
         }
 
-        print(DateFormat.E(weekDay));
-        print(totalSum);
-
         return {
-          'day': DateFormat.E(weekDay),
+          'day': DateFormat.E().format(weekDay).substring(0, 1),
           'amount': totalSum,
         };
       },
-    );
+    ).reversed.toList();
+  }
+
+  double get totalSpending {
+    return groopedTransactionValues.fold(0.0, (sum, item) {
+      return sum + item['amount'];
+    });
   }
 
   @override
@@ -41,8 +45,27 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: <Widget>[],
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groopedTransactionValues.map((data) {
+            // return Text(
+            //   '${data['day']}: ${data['amount']}',
+            // );
+
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                label: data['day'] as String,
+                spendingAmount: data['amount'] as double,
+                spendingPctOfTotal: totalSpending == 0.0
+                    ? 0.0
+                    : (data['amount'] as double) / totalSpending,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
