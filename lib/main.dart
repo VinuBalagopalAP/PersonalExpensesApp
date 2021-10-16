@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-import './widgets/new_transaction.dart';
-import './widgets/transaction_list.dart';
-import './models/transaction.dart';
+import 'package:flutter_complete_guide/core/themes.dart';
+import 'package:flutter_complete_guide/models/transaction.dart';
+import 'package:flutter_complete_guide/widgets/new_transaction.dart';
+import 'package:flutter_complete_guide/widgets/transaction_list.dart';
 
 void main() => runApp(PersonalExpensesApp());
 
@@ -11,26 +11,7 @@ class PersonalExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses',
-      theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          fontFamily: 'Quicksand',
-          textTheme: ThemeData.light().textTheme.copyWith(
-                headline6: TextStyle(
-                  fontFamily: 'OpenSans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-          appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
-                    fontFamily: 'OpenSans',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-          )),
+      theme: themes(),
       home: MyHomePage(),
     );
   }
@@ -39,6 +20,7 @@ class PersonalExpensesApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   // String titleInput;
   // String amountInput;
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }

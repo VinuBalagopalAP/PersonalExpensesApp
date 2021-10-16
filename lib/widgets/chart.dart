@@ -7,18 +7,18 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTansaction);
 
-  List<Map<String, Object>> get groopedTransactionValues {
+  List<Map<String, Object?>> get groopedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(
         Duration(days: index),
       );
-      double totalSum;
+      double? totalSum;
 
       for (var i = 0; i < recentTansaction.length; i++) {
         if (recentTansaction[i].date.day == weekDay.day &&
             recentTansaction[i].date.month == weekDay.month &&
             recentTansaction[i].date.year == weekDay.year) {
-          totalSum += recentTansaction[i].amount;
+          totalSum = totalSum! + recentTansaction[i].amount;
         }
       }
 
