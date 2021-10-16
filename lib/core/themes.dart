@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 ThemeData themes() {
   return ThemeData(
     primarySwatch: Colors.purple,
+    // accentColor: Colors.amber,
+
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: Colors.amber, // Your accent color
     ),
+
     fontFamily: 'Quicksand',
     textTheme: ThemeData.light().textTheme.copyWith(
           headline6: TextStyle(
@@ -15,13 +18,19 @@ ThemeData themes() {
           ),
         ),
     appBarTheme: AppBarTheme(
-      textTheme: ThemeData.light().textTheme.copyWith(
-            headline6: TextStyle(
-              fontFamily: 'OpenSans',
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      // textTheme: ThemeData.light().textTheme.copyWith(
+      //       headline6: TextStyle(
+      //         fontFamily: 'OpenSans',
+      //         fontSize: 20,
+      //         fontWeight: FontWeight.bold,
+      //       ),
+      //     ),
+
+      titleTextStyle: TextStyle(
+        fontFamily: 'OpenSans',
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   );
 }
